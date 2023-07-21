@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CollectiveAccess Pawtucket2\n"
 "POT-Creation-Date: 2016-10-10 23:03-0400\n"
-"PO-Revision-Date: 2016-10-10 23:05-0400\n"
+"PO-Revision-Date: 2023-05-03 00:21-0300\n"
 "Last-Translator: Seth <Seth@collectiveacess.org>\n"
 "Language-Team: CollectiveAccess <info@collectiveaccess.org>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
-"X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _t;_\n"
 "X-Poedit-SearchPath-0: lib\n"
@@ -24,117 +24,119 @@ msgstr ""
 
 #: controllers/BrowseController.php:85
 msgid "Browse %1"
-msgstr ""
+msgstr "Explorar %1"
 
 #: controllers/BrowseController.php:219 controllers/ListingController.php:171
 #: controllers/SearchController.php:268
 msgid "Sort with %1"
-msgstr ""
+msgstr "Ordenar con %1"
 
 #: controllers/ClassroomController.php:130
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 #: controllers/ClassroomController.php:135
 msgid "group"
-msgstr ""
+msgstr "grupo"
 
 #: controllers/CollectionsController.php:56 lib/ca/BaseSearchController.php:485
 #: models/ca_set_items.php:70 models/ca_sets.php:94 models/ca_user_sorts.php:64
 msgid "Collections"
-msgstr ""
+msgstr "Colecciones"
 
 #: controllers/ContactController.php:40
 msgid "Contact form is not configured properly"
-msgstr ""
+msgstr "El formulario de contacto no está configurado correctamente"
 
 #: controllers/ContactController.php:43
 msgid "Contact"
-msgstr ""
+msgstr "Contacto"
 
 #: controllers/ContactController.php:65
 msgid "Please answer the security question"
-msgstr ""
+msgstr "Responda a la pregunta de seguridad"
 
 #: controllers/ContactController.php:75
 msgid "Please enter the required information in the highlighted fields"
 msgstr ""
+"Por favor, introduzca la información requerida en los campos resaltados"
 
 #: controllers/ContactController.php:80
 msgid "Please enter a valid e-mail address"
-msgstr ""
+msgstr "Por favor, escribe una dirección de correo electrónico válida"
 
 #: controllers/ContactController.php:100 controllers/DetailController.php:1029
 msgid "Your email could not be sent"
-msgstr ""
+msgstr "Su correo electrónico no puedo ser enviado"
 
 #: controllers/ContributeController.php:47
 msgid "Contribute form is not enabled"
-msgstr ""
+msgstr "El formulario de contribución no está habilitado"
 
 #: controllers/ContributeController.php:70
 #: controllers/ContributeController.php:229
 msgid "Contribute"
-msgstr ""
+msgstr "Contribuir"
 
 #: controllers/ContributeController.php:117 helpers/themeHelpers.php:1022
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 #: controllers/ContributeController.php:120 helpers/themeHelpers.php:1026
 msgid "Reset"
-msgstr ""
+msgstr "Restablecer"
 
 #: controllers/ContributeController.php:247
 #: controllers/ContributeController.php:251
 msgid "You must agree to the terms and conditions before proceeding."
-msgstr ""
+msgstr "Debe aceptar los términos y condiciones antes de continuar."
 
 #: controllers/ContributeController.php:264
 #: controllers/ContributeController.php:268
 msgid "Please correctly answer the security question."
-msgstr ""
+msgstr "Responda correctamente a la pregunta de seguridad."
 
 #: controllers/ContributeController.php:543
 msgid "There were errors in your submission. See below for details."
 msgstr ""
+"Se han producido errores en su envío. Consulte los detalles a continuación."
 
 #: controllers/ContributeController.php:550
 msgid "Thank you!"
-msgstr ""
+msgstr "Gracias!"
 
 #: controllers/ContributeController.php:560
 msgid "No destination url configured for form %1"
-msgstr ""
+msgstr "No hay url de destino configurada para el formulario %1"
 
 #: controllers/ContributeController.php:569
 msgid "No destination view configured for form %1"
-msgstr ""
+msgstr "No hay vista de destino configurada para el formulario %1"
 
 #: controllers/DetailController.php:211 lib/ca/BaseDetailController.php:135
 #: lib/pawtucket/BaseDetailController.php:154
 msgid "This item is not available for view"
-msgstr ""
+msgstr "Este elemento no está disponible para su visualización"
 
 #: controllers/DetailController.php:242
 msgid "Previous"
-msgstr ""
+msgstr "Anterior"
 
 #: controllers/DetailController.php:243
 msgid "Next"
-msgstr ""
+msgstr "Siguiente"
 
 #: controllers/DetailController.php:244
 msgid "Back"
-msgstr ""
+msgstr "Atrás"
 
 #: controllers/DetailController.php:466 lib/ca/BaseEditorController.php:1753
 msgid "Invalid object/representation"
-msgstr ""
+msgstr "Objeto/representación no válidos"
 
 #: controllers/DetailController.php:519 controllers/DetailController.php:665
 msgid "Cannot download media"
-msgstr ""
+msgstr "No se pueden descargar medios"
 
 #: controllers/DetailController.php:768 controllers/DetailController.php:771
 #: lib/ca/BaseDetailController.php:120 lib/ca/BaseDetailController.php:359
@@ -144,7 +146,7 @@ msgstr ""
 #: lib/pawtucket/BaseDetailController.php:560
 #: models/ca_bundle_displays.php:2796
 msgid "Invalid ID"
-msgstr ""
+msgstr "ID no válido"
 
 #: controllers/DetailController.php:778 controllers/DetailController.php:781
 #: controllers/DetailController.php:921 lib/ca/BaseDetailController.php:125
@@ -155,20 +157,20 @@ msgstr ""
 #: lib/pawtucket/BaseDetailController.php:523
 #: lib/pawtucket/BaseDetailController.php:565
 msgid "ID does not exist"
-msgstr ""
+msgstr "El ID no existe"
 
 #: controllers/DetailController.php:799
 msgid "Please enter your name and email"
-msgstr ""
+msgstr "Por favor, introduzca su nombre y correo electrónico"
 
 #: controllers/DetailController.php:802
 msgid "Please enter your contribution"
-msgstr ""
+msgstr "Por favor, introduzca su contribución"
 
 #: controllers/DetailController.php:859 controllers/DetailController.php:863
 #: lib/pawtucket/BaseDetailController.php:409
 msgid "Thank you for contributing."
-msgstr ""
+msgstr "Gracias por contribuir."
 
 #: controllers/DetailController.php:868 controllers/DetailController.php:872
 #: lib/ca/BaseDetailController.php:389
@@ -177,12 +179,14 @@ msgid ""
 "Thank you for contributing.  Your comments will be posted on this page after "
 "review by site staff."
 msgstr ""
+"Gracias por contribuir.  Sus comentarios serán publicados en esta página "
+"después de  revisión por el personal del sitio."
 
 #: controllers/DetailController.php:878 controllers/DetailController.php:882
 #: lib/ca/BaseDetailController.php:391
 #: lib/pawtucket/BaseDetailController.php:434
 msgid "Thank you for your contribution."
-msgstr ""
+msgstr "Gracias por su contribución."
 
 #: controllers/DetailController.php:938 controllers/DetailController.php:948
 msgid ""
@@ -268,7 +272,7 @@ msgstr ""
 
 #: controllers/GalleryController.php:91 controllers/GalleryController.php:106
 msgid "Gallery"
-msgstr ""
+msgstr "Galería"
 
 #: controllers/LightboxController.php:189
 #: controllers/LightboxController.php:989
@@ -650,7 +654,7 @@ msgstr ""
 #: lib/ca/Utils/CLIUtils.php:283 lib/ca/Utils/CLIUtils.php:2577
 #: lib/ca/Utils/CLIUtils.php:2617 models/ca_lists.php:1653
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 #: controllers/MultiSearchController.php:67
 #: lib/ca/BaseAdvancedSearchController.php:203
@@ -4714,15 +4718,15 @@ msgstr ""
 
 #: lib/ca/BaseBrowseController.php:282
 msgid "browse"
-msgstr ""
+msgstr "explorar"
 
 #: lib/ca/BaseBrowseController.php:340 lib/ca/BaseBrowseController.php:344
 msgid "Browse"
-msgstr ""
+msgstr "Explorar"
 
 #: lib/ca/BaseEditorController.php:110
 msgid "Duplicated %1 \"%2\" (%3)"
-msgstr ""
+msgstr "Duplicado %1 \"%2\" (%3)"
 
 #: lib/ca/BaseEditorController.php:119
 msgid "Could not duplicate %1: %2"
