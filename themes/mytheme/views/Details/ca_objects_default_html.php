@@ -33,6 +33,10 @@
 	$vn_share_enabled = 	$this->getVar("shareEnabled");
 	$vn_pdf_enabled = 		$this->getVar("pdfEnabled");
 	$vn_id =				$t_object->get('ca_objects.object_id');
+	$vn_type_id = 			$t_object->get('ca_objects.type_id');
+	$t_list = new ca_lists();
+	$vn_oh_id = $t_list->getItemIDFromList("object_types", "oral_history");
+	$vn_book_id = $t_list->getItemIDFromList("object_types", "book");
 ?>
 <div class="row">
 	<div class='col-xs-12 navTop'><!--- only shown at small screen size -->
@@ -45,19 +49,74 @@
 	</div><!-- end col -->
 	<div class='col-xs-12 col-sm-10 col-md-10 col-lg-10'>
 		<div class="container"><div class="row">
-			<div class='col-sm-6 col-md-6 col-lg-5 col-lg-offset-1'>
+			<div class='col-sm-12'>
 				{{{representationViewer}}}
 
 
 				<div id="detailAnnotations"></div>
 
-				<?php print caObjectRepresentationThumbnails($this->request, $this->getVar("representation_id"), $t_object, array("returnAs" => "bsCols", "linkTo" => "carousel", "bsColClasses" => "smallpadding col-sm-3 col-md-3 col-xs-4", "primaryOnly" => $this->getVar('representationViewerPrimaryOnly') ? 1 : 0)); ?>
+				<?php print caObjectRepresentationThumbnails($this->request, $this->getVar("representation_id"), $t_object, array("returnAs" => "bsCols", "linkTo" => "carousel", "bsColClasses" => "smallpadding col-sm-2", 'version' => 'iconlarge')); ?>
+
+				<hr/>
+
+			</div><!-- end col -->
+
+			<div class='col-sm-12'>
+				<table class="table">
+					<tbody>
+<?php
+				if ($vs_author = $t_object->get('ca_entities.preferred_labels', array('restrictToRelationshipTypes' => array('author'), 'delimiter' => ', ', 'returnAsLink' => true))) {
+					print "<tr class='unit'><td class='table-first-column'>Autor</td><td>".$vs_author."</td></tr>";
+				}
+				if ($vs_name = $t_object->get('ca_objects.preferred_labels')) {
+					print "<tr class='unit'><td class='table-first-column'>Título</td><td><a href='/Detail/entities/2830'>".$vs_name."</a></td></tr>";
+				}
+				if ($va_collection = $t_object->getWithTemplate('<ifcount code="ca_collections" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_collections"><l>^ca_collections.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
+					print "<tr class='unit'><td class='table-first-column'>Colección</td><td>".$va_collection."</td></tr>";
+				}
+				if ($vs_idno = $t_object->get('ca_objects.idno')) {
+					print "<tr class='unit'><td class='table-first-column'>Número de inventario</td><td>".$vs_idno."</td></tr>";
+				}
+				if ($vs_call = $t_object->get('ca_objects.call_number')) {
+					print "<tr class='unit'><td class='table-first-column'>Call Number</td><td>".$vs_call."</td></tr>";
+				}
+				if ($vs_title = $t_object->get('ca_objects.title')) {
+					print "<tr class='unit'><td class='table-first-column'>Title</td><td>".$vs_title."</td></tr>";
+				}
+				if ($vs_language = $t_object->get('ca_objects.language', array('delimiter' => '<br/>'))) {
+					print "<tr class='unit'><td class='table-first-column'>Language</td><td>".$vs_language."</td></tr>";
+				}
+				# --- access points
+				$va_access_points = array();
+				$va_subjects = $t_object->get('ca_list_items.preferred_labels', array('returnAsArray' => true));
+				$va_getty = $t_object->get('ca_objects.aat', array('returnAsArray' => true));
+				$va_lcsh = $t_object->get('ca_objects.lcsh_terms', array('returnAsArray' => true));
+				$va_access_points = array_merge($va_subjects, $va_getty, $va_lcsh);
+				if (sizeof($va_access_points)) {
+					$va_access_points_sorted = array();
+					foreach($va_access_points as $vs_access_point){
+						$vs_access_point = trim(preg_replace("/\[[^\]]*\]/", "", $vs_access_point));
+						if($vs_access_point){
+							$va_access_points_sorted[$vs_access_point] = caNavLink($this->request, $vs_access_point, "", "", "MultiSearch",  "Index", array('search' => $vs_access_point));
+						}
+					}
+					ksort($va_access_points_sorted, SORT_NATURAL | SORT_FLAG_CASE);
+					print "<tr class='unit'><td class='table-first-column'>Asuntos</td><td>".implode(", ", $va_access_points_sorted)."</td></tr>";
+
+				}
+?>
+					</tbody>
+				</table>
+<?php
+?>
+
 
 <?php
-				# Comment and Share Tools
-				if ($vn_comments_enabled | $vn_share_enabled | $vn_pdf_enabled) {
+				# Comment/ Share / pdf / ask archivist tools
 
 					print '<div id="detailTools">';
+					print "<div class='detailTool'><span class='glyphicon glyphicon-envelope'></span>".caNavLink($this->request, "Inquire About This Item", "", "", "Contact",  "form", array('table' => 'ca_objects', 'id' => $vn_id))."</div>";
+
 					if ($vn_comments_enabled) {
 ?>
 						<div class="detailTool"><a href='#' onclick='jQuery("#detailComments").slideToggle(); return false;'><span class="glyphicon glyphicon-comment"></span>Comments and Tags (<?php print sizeof($va_comments) + sizeof($va_tags); ?>)</a></div><!-- end detailTool -->
@@ -67,73 +126,14 @@
 					if ($vn_share_enabled) {
 						print '<div class="detailTool"><span class="glyphicon glyphicon-share-alt"></span>'.$this->getVar("shareLink").'</div><!-- end detailTool -->';
 					}
+
 					if ($vn_pdf_enabled) {
 						print "<div class='detailTool'><span class='glyphicon glyphicon-file'></span>".caDetailLink($this->request, "Download as PDF", "faDownload", "ca_objects",  $vn_id, array('view' => 'pdf', 'export_format' => '_pdf_ca_objects_summary'))."</div>";
 					}
+
 					print '</div><!-- end detailTools -->';
-				}
 
 ?>
-
-			</div><!-- end col -->
-
-			<div class='col-sm-6 col-md-6 col-lg-5'>
-				<!-- Titulo -->
-				Titulo
-				<H4>
-					<!-- {{{
-						111
-						<unit relativeTo="ca_collections" delimiter="<br/>">
-							<l>^ca_collections.preferred_labels.name</l>
-						</unit>
-
-						<ifcount min="1" code="ca_collections"> ➔ </ifcount>}}} -->
-					{{{ca_objects.preferred_labels.name}}}
-				</H4>
-
-
-				<H4>{{{<unit relativeTo="ca_entities" delimiter="<br/>"><l>^ca_collections.origination</l></unit><ifcount min="1" code="ca_entities"> ➔ </ifcount>}}}{{{ca_objects.origination}}}</H4>
-
-				<H6>{{{<unit>^ca_objects.type_id</unit>}}}</H6>
-				<HR>
-
-				{{{<ifdef code="ca_objects.measurementSet.measurements">^ca_objects.measurementSet.measurements (^ca_objects.measurementSet.measurementsType)</ifdef><ifdef code="ca_objects.measurementSet.measurements,ca_objects.measurementSet.measurements"> x </ifdef><ifdef code="ca_objects.measurementSet.measurements2">^ca_objects.measurementSet.measurements2 (^ca_objects.measurementSet.measurementsType2)</ifdef>}}}
-
-
-				{{{<ifdef code="ca_objects.idno"><H6>Identifier:</H6>^ca_objects.idno<br/></ifdef>}}}
-				{{{<ifdef code="ca_objects.containerID"><H6>Box/series:</H6>^ca_objects.containerID<br/></ifdef>}}}
-				{{{<ifdef code="ca_objects.institution"><H6>Museo:</H6>^ca_objects.institution<br/></ifdef>}}}
-
-				{{{<ifdef code="ca_objects.description">
-					<div class='unit'><h6>Description</h6>
-						<span class="trimText">^ca_objects.description</span>
-					</div>
-				</ifdef>}}}
-
-
-				{{{<ifdef code="ca_objects.dateSet.setDisplayValue"><H6>Date:</H6>^ca_objects.dateSet.setDisplayValue<br/></ifdef>}}}
-
-				<hr></hr>
-					<div class="row">
-						<div class="col-sm-6">
-							{{{<ifcount code="ca_entities" min="1" max="1"><H6>Autor</H6></ifcount>}}}
-							{{{<ifcount code="ca_entities" min="2"><H6>Autores</H6></ifcount>}}}
-							{{{<unit relativeTo="ca_entities" delimiter="<br/>"><l>^ca_entities.preferred_labels</l> (^relationship_typename)</unit>}}}
-
-							{{{<ifcount code="ca_places" min="1" max="1"><H6>Related place</H6></ifcount>}}}
-							{{{<ifcount code="ca_places" min="2"><H6>Related places</H6></ifcount>}}}
-							{{{<unit relativeTo="ca_places" delimiter="<br/>"><l>^ca_places.preferred_labels</l> (^relationship_typename)</unit>}}}
-
-							{{{<ifcount code="ca_list_items" min="1" max="1"><H6>Related Term</H6></ifcount>}}}
-							{{{<ifcount code="ca_list_items" min="2"><H6>Related Terms</H6></ifcount>}}}
-							{{{<unit relativeTo="ca_list_items" delimiter="<br/>"><l>^ca_list_items.preferred_labels.name_plural</l> (^relationship_typename)</unit>}}}
-
-						</div><!-- end col -->
-						<div class="col-sm-6 colBorderLeft">
-							{{{map}}}
-						</div>
-					</div><!-- end row -->
-
 			</div><!-- end col -->
 		</div><!-- end row --></div><!-- end container -->
 	</div><!-- end col -->
