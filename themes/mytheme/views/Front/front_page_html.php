@@ -29,35 +29,20 @@
  *
  * ----------------------------------------------------------------------
  */
-//print $this->render("Front/featured_set_slideshow_html.php");
+	print $this->render("Front/featured_set_slideshow_html.php");
 ?>
-<!--<div class="row">
-		<div class="col-sm-8">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque semper sapien in tincidunt. Curabitur ac nunc est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc vel magna tincidunt, egestas enim a, ultricies ipsum. Vestibulum at metus lacus. Etiam viverra ligula at accumsan accumsan. Quisque vitae urna in sapien vehicula hendrerit.</p>
-			<p>Aliquam ornare, leo non hendrerit consequat, lacus arcu volutpat justo, at pulvinar lacus metus nec turpis. Phasellus luctus malesuada ipsum at consectetur. Nullam nisl dui, hendrerit id sem a, congue imperdiet tortor. Suspendisse interdum augue vitae porta imperdiet. Donec interdum eu risus sed venenatis. Maecenas accumsan odio a sapien euismod fringilla. Praesent felis arcu, facilisis et fringilla ut, tristique at velit. Nunc at diam vitae diam vulputate blandit. Vivamus quis arcu egestas nibh vulputate auctor at ut eros.</p>
-			<p>Suspendisse tortor ex, iaculis et lorem nec, consequat eleifend arcu. Quisque vel tortor volutpat, dapibus lorem ac, vestibulum odio. Praesent eget sapien vitae mi vestibulum vulputate. Pellentesque nec maximus magna. Proin ut dictum libero, ac finibus diam. Cras a dolor malesuada, ullamcorper risus at, scelerisque metus. Nam suscipit suscipit posuere. Donec convallis in velit nec facilisis. Vivamus blandit fermentum tincidunt. Morbi blandit, nibh in auctor hendrerit, magna sapien varius orci, sit amet malesuada turpis odio at arcu. Nam ac porta metus, vitae venenatis nunc. Nam tincidunt, felis ut scelerisque tincidunt, erat nisl congue nunc, non suscipit purus ex non felis. Donec cursus eget diam in malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luctus augue sed sodales pretium.</p>
-			<p>Donec ut gravida mi, sed elementum felis. Praesent sed feugiat nisi. Donec ac diam sapien. Aenean congue ut mi eget iaculis. Aenean interdum vitae tortor in viverra. Cras congue nunc dui, sed efficitur dui mollis et. Vivamus venenatis tortor sit amet quam congue, in lobortis massa iaculis. Donec augue lectus, mollis nec feugiat in, mattis eu risus.</p>
-			<p>Maecenas sagittis volutpat arcu sed dapibus. Integer fringilla sollicitudin purus eget iaculis. Aenean commodo posuere enim porta gravida. In vel odio sem. Pellentesque eu pellentesque eros, in dapibus arcu. Quisque tellus ligula, convallis at consequat ac, interdum ac leo. Aenean ullamcorper ut mi et tempus. Curabitur fringilla fringilla euismod. Proin et dui ac dui suscipit mollis. Nunc ac faucibus est. Morbi ac risus erat.</p>
-		</div>
-		<div class="col-sm-4">
-<?php
-/*		print $this->render("Front/gallery_set_links_html.php");
-*/ ?>
-		</div>
-	</div>-->
 
 <div class="row">
 	<div class="col-sm-3">
 
 	</div>
-	<div class="col-sm-9">
+	<div class="col-sm-12">
 		<H2>Museos</H2>
 		<hr>
 		<div class="row">
 			<div class="col-sm-3 text-center">
 				<a href="https://manzanadelasluces.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_manzana.png', array("alt" => "Smithsonian Institution Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_manzana.png" alt="">
 					<h3>Complejo Histórico Cultural Manzana de las Luces</h3>
 					<div class="text-muted">
@@ -68,8 +53,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="https://museojesuitico.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_jesus_maria.png', array("alt" => "University of Kansas Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_jesus_maria.png" alt="">
 					<h3>Estancia de Jesús María - Museo Jesuítico Nacional</h3>
 					<div class="text-muted">
@@ -81,8 +65,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="https://casadelaindependencia.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_chi.png', array("alt" => "South Dakota School of Mines Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_chi.png" alt="">
 					<h3>Museo Casa Histórica de la Independencia</h3>
 					<div class="text-muted">
@@ -92,9 +75,8 @@
 				</a>
 			</div>
 			<div class="col-sm-3 text-center">
-				<?php //print caGetThemeGraphic($this->request, 'museos_web_alta_gracia.png', array("alt" => "University of Texas Logo"), ['class' => 'inst_img']) ?>
 				<a href="https://museoliniers.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_alta_gracia.png" alt="">
 					<h3>Estancia de Jesús María - Museo Jesuítico Nacional</h3>
 					<div class="text-muted">
@@ -110,8 +92,7 @@
 		<div class="row">
 			<div class="col-sm-3 text-center">
 				<a href="https://cabildonacional.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_manzana.png', array("alt" => "Smithsonian Institution Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_cabildo.png" alt="">
 					<h3>Museo del Cabildo de Buenos Aires y de la Revolución de Mayo</h3>
 					<div class="text-muted">
@@ -122,8 +103,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="https://museodelhombre.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_jesus_maria.png', array("alt" => "University of Kansas Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_museo_del_hombre.png" alt="">
 					<h3>Museo del Hombre</h3>
 					<div class="text-muted">
@@ -134,8 +114,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="http://web.museoevita.org.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_chi.png', array("alt" => "South Dakota School of Mines Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_inst_evita.png" alt="">
 					<h3>Museo Evita</h3>
 					<div class="text-muted">
@@ -145,9 +124,8 @@
 				</a>
 			</div>
 			<div class="col-sm-3 text-center">
-				<?php //print caGetThemeGraphic($this->request, 'museos_web_alta_gracia.png', array("alt" => "University of Texas Logo"), ['class' => 'inst_img']) ?>
 				<a href="https://museodelnorte.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_museo_monrte.png" alt="">
 					<h3>Museo Histórico del Norte</h3>
 					<div class="text-muted">
@@ -162,8 +140,7 @@
 		<div class="row">
 			<div class="col-sm-3 text-center">
 				<a href="https://museohistoriconacional.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_manzana.png', array("alt" => "Smithsonian Institution Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_museo_historico.png" alt="">
 					<h3>Museo Histórico Nacional</h3>
 					<div class="text-muted">
@@ -174,8 +151,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="https://museosarmiento.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_jesus_maria.png', array("alt" => "University of Kansas Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_historico_sarmiento.png" alt="">
 					<h3>Museo Histórico Sarmiento</h3>
 					<div class="text-muted">
@@ -186,8 +162,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="https://museomalvinas.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_chi.png', array("alt" => "South Dakota School of Mines Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_malvinas.png" alt="">
 					<h3>Museo Malvinas e Islas del Atlántico Sur</h3>
 					<div class="text-muted">
@@ -197,9 +172,8 @@
 				</a>
 			</div>
 			<div class="col-sm-3 text-center">
-				<?php //print caGetThemeGraphic($this->request, 'museos_web_alta_gracia.png', array("alt" => "University of Texas Logo"), ['class' => 'inst_img']) ?>
 				<a href="https://museomitre.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_mitre.png" alt="">
 					<h3>Museo Mitre</h3>
 
@@ -214,8 +188,7 @@
 		<div class="row">
 			<div class="col-sm-3 text-center">
 				<a href="https://museoroca.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_manzana.png', array("alt" => "Smithsonian Institution Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_roca.png" alt="">
 					<h3>Museo Roca- Instituto de Investigaciones Históricas</h3>
 					<div class="text-muted">
@@ -226,8 +199,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="https://casanatalsarmiento.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_jesus_maria.png', array("alt" => "University of Kansas Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_casa_natal_sarmiento.png" alt="">
 					<h3>Museo y Biblioteca Casa Natal de Sarmiento </h3>
 					<div class="text-muted">
@@ -238,8 +210,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="https://museodelacuerdo.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_chi.png', array("alt" => "South Dakota School of Mines Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_casa_del_acuerdo.png" alt="">
 					<h3>Museo y Biblioteca Casa del Acuerdo de San Nicolás</h3>
 					<div class="text-muted">
@@ -249,9 +220,8 @@
 				</a>
 			</div>
 			<div class="col-sm-3 text-center">
-				<?php //print caGetThemeGraphic($this->request, 'museos_web_alta_gracia.png', array("alt" => "University of Texas Logo"), ['class' => 'inst_img']) ?>
 				<a href="https://museourquiza.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_san_jose.png" alt="">
 					<h3>Palacio San José -Museo y Monumento Nacional Justo José de Urquiza</h3>
 
@@ -267,8 +237,7 @@
 		<div class="row">
 			<div class="col-sm-3 text-center">
 				<a href="https://museoyrurtia.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_manzana.png', array("alt" => "Smithsonian Institution Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_yrurtia.png" alt="">
 					<h3>Museo Casa de Yrurtia</h3>
 					<div class="text-muted">
@@ -279,8 +248,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="https://museodeltraje.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_jesus_maria.png', array("alt" => "University of Kansas Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_traje.png" alt="">
 					<h3>Museo de la Historia del Traje</h3>
 					<div class="text-muted">
@@ -291,8 +259,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="http://museoartedecorativo.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_chi.png', array("alt" => "South Dakota School of Mines Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_decorativo.png" alt="">
 					<h3>Museo Nacional de Arte Decorativo</h3>
 					<div class="text-muted">
@@ -302,9 +269,8 @@
 				</a>
 			</div>
 			<div class="col-sm-3 text-center">
-				<?php //print caGetThemeGraphic($this->request, 'museos_web_alta_gracia.png', array("alt" => "University of Texas Logo"), ['class' => 'inst_img']) ?>
 				<a href="https://mnao.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_oriental.png" alt="">
 					<h3>Museo Nacional de Arte Oriental</h3>
 
@@ -319,8 +285,7 @@
 		<div class="row">
 			<div class="col-sm-3 text-center">
 				<a href="https://www.bellasartes.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_manzana.png', array("alt" => "Smithsonian Institution Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/logo_museo_b_artes_0_0.jpg" alt="">
 					<h3>Museo Nacional de Bellas Artes</h3>
 					<div class="text-muted">
@@ -331,8 +296,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="https://museodelgrabado.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_jesus_maria.png', array("alt" => "University of Kansas Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_grabado.png" alt="">
 					<h3>Museo Nacional del Grabado</h3>
 					<div class="text-muted">
@@ -343,8 +307,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="https://museoterry.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_chi.png', array("alt" => "South Dakota School of Mines Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_terry.png" alt="">
 					<h3>Museo Regional de Pintura &quot;José Antonio Terry&quot;</h3>
 					<div class="text-muted">
@@ -354,9 +317,8 @@
 				</a>
 			</div>
 			<div class="col-sm-3 text-center">
-				<?php //print caGetThemeGraphic($this->request, 'museos_web_alta_gracia.png', array("alt" => "University of Texas Logo"), ['class' => 'inst_img']) ?>
 				<a href="https://palaisdeglace.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_palais.png" alt="">
 					<h3>Palais de Glace | Palacio Nacional de las Artes </h3>
 
@@ -371,8 +333,7 @@
 		<div class="row">
 			<div class="col-sm-3 text-center">
 				<a href="https://casadelbicentenario.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_manzana.png', array("alt" => "Smithsonian Institution Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_cnb.png" alt="">
 					<h3>Casa Nacional del Bicentenario</h3>
 					<div class="text-muted">
@@ -383,8 +344,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="https://museorojas.cultura.gob.ar/" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_jesus_maria.png', array("alt" => "University of Kansas Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/museos_web_rojas.png" alt="">
 					<h3>Museo Casa de Ricardo Rojas</h3>
 					<div class="text-muted">
@@ -395,8 +355,7 @@
 			</div>
 			<div class="col-sm-3 text-center">
 				<a href="https://www.bn.gov.ar/biblioteca/museo" target="_blank" rel="noopener noreferrer">
-					<?php //print caGetThemeGraphic($this->request, 'museos_web_chi.png', array("alt" => "South Dakota School of Mines Logo"), ['class' => 'inst_img']) ?>
-					<img style="max-width: 100%; max-width: 100%;"
+					<img style="max-width: 100%; max-height: 100%;"
 						 src="/ca/pawtucket/themes/mytheme/assets/pawtucket/graphics/logo_museo_libro_lengua_0.jpg" alt="">
 					<h3>Museo del Libro y de la Lengua</h3>
 					<div class="text-muted">
@@ -407,5 +366,4 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
