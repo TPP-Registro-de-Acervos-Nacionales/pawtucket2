@@ -139,7 +139,7 @@
 					$(document).ready(function(){
 						$('#headerSearchButton').prop('disabled',true);
 						$('#headerSearchInput').on('keyup', function(){
-							$('#headerSearchButton').prop('disabled', this.value == "" ? true : false);
+							$('#headerSearchButton').prop('disabled', this.value === "");
 						})
 					});
 				</script>
@@ -149,7 +149,7 @@
 					<?php /*print $this->render("pageFormat/browseMenu.php"); */?>
 					<li <?php print (($this->request->getController() == "Search") && ($this->request->getAction() == "advanced")) ? 'class="active"' : ''; ?>><?php print caNavLink($this->request, _t("Búsqueda Avanzada"), "", "", "Search", "advanced/objects"); ?></li>
 					<li <?php print ($this->request->getController() == "Gallery") ? 'class="active"' : ''; ?>><?php print caNavLink($this->request, _t("Gallery"), "", "", "Gallery", "Index"); ?></li>
-					<li <?php print ($this->request->getController() == "Collections") ? 'class="active"' : ''; ?>><?php print caNavLink($this->request, _t("Collections"), "", "", "Collections", "index"); ?></li>
+					<li <?php print ($this->request->getController() == "Collections") ? 'class="active"' : ''; ?>><?php print caNavLink($this->request, _t("Collections"), "", "", "Browse", "collections"); ?></li>
 					<li <?php print ($this->request->getController() == "Contact") ? 'class="active"' : ''; ?>><?php print caNavLink($this->request, _t("Contact"), "", "", "Contact", "Form"); ?></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
