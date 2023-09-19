@@ -65,29 +65,38 @@
 				<table class="table">
 					<tbody>
 <?php
-				if ($vs_author = $t_object->get('ca_entities.preferred_labels', array('restrictToRelationshipTypes' => array('author'), 'delimiter' => ', ', 'returnAsLink' => true))) {
-					print "<tr class='unit'><td class='table-first-column'>Autor</td><td>".$vs_author."</td></tr>";
-				}
-				if ($vs_name = $t_object->get('ca_objects.preferred_labels')) {
-					print "<tr class='unit'><td class='table-first-column'>Título</td><td><a href='/Detail/entities/2830'>".$vs_name."</a></td></tr>";
-				}
-				if ($va_collection = $t_object->getWithTemplate('<ifcount code="ca_collections" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_collections"><l>^ca_collections.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
-					print "<tr class='unit'><td class='table-first-column'>Colección</td><td>".$va_collection."</td></tr>";
+				if ($va_collection = $t_object->getWithTemplate('<ifcount code="ca_collections" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_collections" restrictToRelationshipTypes="guardian"><l>^ca_collections.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
+					print "<tr class='unit'><td class='table-first-column'>Institución</td><td>".$va_collection."</td></tr>";
 				}
 				if ($vs_idno = $t_object->get('ca_objects.idno')) {
-					print "<tr class='unit'><td class='table-first-column'>Número de inventario</td><td>".$vs_idno."</td></tr>";
+					print "<tr class='unit'><td class='table-first-column'>Código de referencia</td><td>".$vs_idno."</td></tr>";
 				}
-				if ($vs_call = $t_object->get('ca_objects.call_number')) {
+				if ($vs_idno = $t_object->get('ca_objects.nro_inventario')) {
+					print "<tr class='unit'><td class='table-first-column'>Número de inventario local</td><td>".$vs_idno."</td></tr>";
+				}
+				if ($va_collection = $t_object->getWithTemplate('<ifcount code="ca_collections" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_collections" restrictToRelationshipTypes="part_of"><l>^ca_collections.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
+					print "<tr class='unit'><td class='table-first-column'>Colección</td><td>".$va_collection."</td></tr>";
+				}
+				if ($vs_idno = $t_object->get('ca_objects.nombre_del_objeto')) {
+					print "<tr class='unit'><td class='table-first-column'>Nombre del objeto</td><td>".$vs_idno."</td></tr>";
+				}
+				/* if ($vs_author = $t_object->get('ca_entities.preferred_labels', array('restrictToRelationshipTypes' => array('author'), 'delimiter' => ', ', 'returnAsLink' => true))) {
+					print "<tr class='unit'><td class='table-first-column'>Autor</td><td>".$vs_author."</td></tr>";
+				} */
+				/* if ($vs_name = $t_object->get('ca_objects.preferred_labels')) {
+					print "<tr class='unit'><td class='table-first-column'>Título</td><td><a href='/Detail/entities/2830'>".$vs_name."</a></td></tr>";
+				} */
+				/* if ($vs_call = $t_object->get('ca_objects.call_number')) {
 					print "<tr class='unit'><td class='table-first-column'>Call Number</td><td>".$vs_call."</td></tr>";
-				}
-				if ($vs_title = $t_object->get('ca_objects.title')) {
+				} */
+				/* if ($vs_title = $t_object->get('ca_objects.title')) {
 					print "<tr class='unit'><td class='table-first-column'>Title</td><td>".$vs_title."</td></tr>";
-				}
-				if ($vs_language = $t_object->get('ca_objects.language', array('delimiter' => '<br/>'))) {
+				} */
+				/* if ($vs_language = $t_object->get('ca_objects.language', array('delimiter' => '<br/>'))) {
 					print "<tr class='unit'><td class='table-first-column'>Language</td><td>".$vs_language."</td></tr>";
-				}
+				} */
 				# --- access points
-				$va_access_points = array();
+				/* $va_access_points = array();
 				$va_subjects = $t_object->get('ca_list_items.preferred_labels', array('returnAsArray' => true));
 				$va_getty = $t_object->get('ca_objects.aat', array('returnAsArray' => true));
 				$va_lcsh = $t_object->get('ca_objects.lcsh_terms', array('returnAsArray' => true));
@@ -103,7 +112,7 @@
 					ksort($va_access_points_sorted, SORT_NATURAL | SORT_FLAG_CASE);
 					print "<tr class='unit'><td class='table-first-column'>Asuntos</td><td>".implode(", ", $va_access_points_sorted)."</td></tr>";
 
-				}
+				} */
 ?>
 					</tbody>
 				</table>
