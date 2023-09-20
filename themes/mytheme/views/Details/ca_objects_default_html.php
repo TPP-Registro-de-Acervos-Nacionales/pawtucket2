@@ -77,9 +77,22 @@
 				if ($va_collection = $t_object->getWithTemplate('<ifcount code="ca_collections" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_collections" restrictToRelationshipTypes="part_of"><l>^ca_collections.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
 					print "<tr class='unit'><td class='table-first-column'>Colección</td><td>".$va_collection."</td></tr>";
 				}
-				if ($vs_idno = $t_object->get('ca_objects.nombre_del_objeto')) {
-					print "<tr class='unit'><td class='table-first-column'>Nombre del objeto</td><td>".$vs_idno."</td></tr>";
+				if ($vs_nombre_objeto = $t_object->get('ca_objects.nombre_del_objeto')) {
+					print "<tr class='unit'><td class='table-first-column'>Nombre del objeto</td><td>".$vs_nombre_objeto."</td></tr>";
 				}
+				if ($vs_tipo_objeto = $t_object->get('ca_objects.tipo_de_objeto')) {
+					print "<tr class='unit'><td class='table-first-column'>Tipo de objeto</td><td>".$vs_tipo_objeto."</td></tr>";
+				}
+				if ($vs_descripcion = $t_object->get('ca_objects.descripcion_objeto')) {
+					print "<tr class='unit'><td class='table-first-column'>Descripción del objeto</td><td>".$vs_descripcion."</td></tr>";
+				}
+				if ($vs_todo_o_parte = $t_object->get('ca_objects.todo_o_parte')) {
+					print "<tr class='unit'><td class='table-first-column'>Todo/parte (todo o parte)</td><td>".$vs_todo_o_parte."</td></tr>";
+				}
+				if ($vs_componente = $t_object->get('ca_objects.component')) {
+					print "<tr class='unit'><td class='table-first-column'>Componente</td><td>".$vs_todo_o_parte."</td></tr>";
+				}
+				component
 				/* if ($vs_author = $t_object->get('ca_entities.preferred_labels', array('restrictToRelationshipTypes' => array('author'), 'delimiter' => ', ', 'returnAsLink' => true))) {
 					print "<tr class='unit'><td class='table-first-column'>Autor</td><td>".$vs_author."</td></tr>";
 				} */
