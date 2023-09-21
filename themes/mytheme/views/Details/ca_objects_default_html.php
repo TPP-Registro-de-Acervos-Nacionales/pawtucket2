@@ -90,9 +90,23 @@
 					print "<tr class='unit'><td class='table-first-column'>Todo/parte (todo o parte)</td><td>".$vs_todo_o_parte."</td></tr>";
 				}
 				if ($vs_componente = $t_object->get('ca_objects.component')) {
-					print "<tr class='unit'><td class='table-first-column'>Componente</td><td>".$vs_todo_o_parte."</td></tr>";
+					print "<tr class='unit'><td class='table-first-column'>Componente</td><td>".$vs_componente."</td></tr>";
 				}
-				component
+				if ($vs_elements = $t_object->get('ca_objects.elements')) {
+					print "<tr class='unit'><td class='table-first-column'>Partes</td><td>".$vs_elements."</td></tr>";
+				}
+				if ($vs_title = $t_object->get('ca_objects.preferred_labels')) {
+					print "<tr class='unit'><td class='table-first-column'>Título</td><td>".$vs_title."</td></tr>";
+				}
+				if ($vs_title_type = $t_object->get('ca_objects.title_type')) {
+					print "<tr class='unit'><td class='table-first-column'>Tipo de título</td><td>".$vs_title_type."</td></tr>";
+				}
+				if ($vs_asociacion_historica = $t_object->get('ca_objects.asociacion_historica')) {
+					print "<tr class='unit'><td class='table-first-column'>Nota de autoría / fabricación</td><td>".$vs_autorship_note."</td></tr>";
+				}
+				if ($vs_asociacion_historica = $t_object->get('ca_objects.autorship_note')) {
+					print "<tr class='unit'><td class='table-first-column'>Asociación histórica / Descripción de contenido</td><td>".$vs_asociacion_historica."</td></tr>";
+				}
 				/* if ($vs_author = $t_object->get('ca_entities.preferred_labels', array('restrictToRelationshipTypes' => array('author'), 'delimiter' => ', ', 'returnAsLink' => true))) {
 					print "<tr class='unit'><td class='table-first-column'>Autor</td><td>".$vs_author."</td></tr>";
 				} */
