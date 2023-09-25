@@ -61,31 +61,11 @@
 
 			</div><!-- end col -->
 
-			<h1>Dimensiones</h1>
-			<unit relativeTo="ca_objects.dimensiones">
-				<ifdef code="ca_objects.dimensiones.tipo_de_medida">tipo_de_medida: {{{ca_objects.dimensiones.tipo_de_medida}}} <br></ifdef>
-				<ifdef code="ca_objects.dimensiones.valor">valor: {{{ca_objects.dimensiones.valor}}} <br></ifdef>
-				<ifdef code="ca_objects.dimensiones.unidad">unidad: {{{ca_objects.dimensiones.unidad}}} <br></ifdef>
-				<ifdef code="ca_objects.dimensiones.funcion">funcion: {{{ca_objects.dimensiones.funcion}}}</ifdef>
-			</unit>
-
-			{{{<ifdef code="ca_objects.dimensiones.tipo_de_medida
-				|ca_objects.dimensiones.valor
-				|ca_objects.dimensiones.unidad
-				|ca_objects.dimensiones.funcion">
-				<div class="unit"><label>Dimensiones</label>
-					<unit relativeTo="ca_objects.dimensiones" delimiter="<br/><br/>">
-						<ifdef code="ca_objects.dimensiones.tipo_de_medida"><b>^ca_objects.dimensiones.tipo_de_medida: </b></ifdef>
-						<ifdef code="ca_objects.dimensiones.valor">Height: ^ca_objects.dimensiones.valor </ifdef>
-						<ifdef code="ca_objects.dimensiones.unidad">Width: ^ca_objects.dimensiones.unidad </ifdef>
-						<ifdef code="ca_objects.dimensiones.funcion">Depth: ^ca_objects.dimensiones.funcion </ifdef>
-					</unit>
-				</div></ifdef>}}}
 			<div class='col-sm-12'>
 				<table class="table">
 					<tbody>
 <?php
-				if ($vs_dimensiones = $t_object->get('ca_objects.dimensiones', array('convertCodesToDisplayText' => true))) {
+				/* if ($vs_dimensiones = $t_object->get('ca_objects.dimensiones', array('convertCodesToDisplayText' => true))) {
 					if (sizeof($vs_dimensiones) > 0) {
 						$fila = "<tr class='unit'>
 							<td class='table-first-column'>Dimensiones</td><td>";
@@ -105,16 +85,15 @@
 						print $vs_dimensiones."</td></tr>";
 
 					}
-
-				}
-				if ($va_collection = $t_object->getWithTemplate('<ifcount code="ca_collections" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_collections"><l>^ca_collections.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
+				} */
+				if ($va_collection = $t_object->getWithTemplate('<ifcount code="ca_collections" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_collections" restrictToRelationshipTypes="guardian"><l>^ca_collections.preferred_labels</l></unit></unit></ifcount>')) {
 					print "<tr class='unit'><td class='table-first-column'>Institución</td><td>".$va_collection."</td></tr>";
 				}
-				if ($vs_idno = $t_object->get('ca_objects.idno')) {
-					print "<tr class='unit'><td class='table-first-column'>Código de referencia</td><td>".$vs_idno."</td></tr>";
+				if ($vs_codigo_de_referencia = $t_object->get('ca_objects.idno')) {
+					print "<tr class='unit'><td class='table-first-column'>Código de referencia</td><td>".$vs_codigo_de_referencia."</td></tr>";
 				}
 				if ($vs_idno = $t_object->get('ca_objects.nro_inventario')) {
-					print "<tr class='unit'><td class='table-first-column'>Número de inventario local</td><td>".$vs_idno."</td></tr>";
+					print "<tr class='unit'><td class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.nro_inventario")."</td><td>".$vs_idno."</td></tr>";
 				}
 				if($vs_category = $t_object->get("ca_objects.category", array('convertCodesToDisplayText' => true))) {
 					print "<tr class='unit'><td class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.category")."</td><td>"."{$vs_category}</td></tr>";
