@@ -87,15 +87,94 @@
 					}
 				} */
 				if ($va_collection = $t_object->getWithTemplate('<ifcount code="ca_collections" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_collections" restrictToRelationshipTypes="guardian"><l>^ca_collections.preferred_labels</l></unit></unit></ifcount>')) {
-					print "<tr class='unit'><td class='table-first-column'>Institución</td><td>".$va_collection."</td></tr>";
+					print "<tr class='unit'><th class='table-first-column'>Institución</th><td>".$va_collection."</td></tr>";
 				}
 				if ($vs_codigo_de_referencia = $t_object->get('ca_objects.idno')) {
-					print "<tr class='unit'><td class='table-first-column'>Código de referencia</td><td>".$vs_codigo_de_referencia."</td></tr>";
+					print "<tr class='unit'><th class='table-first-column'>Código de referencia</th><td>".$vs_codigo_de_referencia."</td></tr>";
 				}
 				if ($vs_idno = $t_object->get('ca_objects.nro_inventario')) {
-					print "<tr class='unit'><td class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.nro_inventario")."</td><td>".$vs_idno."</td></tr>";
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.nro_inventario")."</th><td>".$vs_idno."</td></tr>";
 				}
-				if($vs_category = $t_object->get("ca_objects.category", array('convertCodesToDisplayText' => true))) {
+				if ($va_agrupacion = $t_object->getWithTemplate('<ifcount code="ca_collections" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_collections" restrictToRelationshipTypes="part_of"><l>^ca_collections.preferred_labels</l></unit></unit></ifcount>')) {
+					print "<tr class='unit'><th class='table-first-column'>Agrupación a la que pertenece</th><td>".$va_agrupacion."</td></tr>";
+				}
+				if ($vs_clase = $t_object->get('ca_objects.class', array('convertCodesToDisplayText' => true, 'delimiter' => ', '))) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.class")."</th><td>".$vs_clase."</td></tr>";
+				}
+				if ($vs_tipo_documental = $t_object->get('ca_objects.tipo_documental')) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.tipo_documental")."</th><td>".$vs_tipo_documental."</td></tr>";
+				}
+				if ($vs_tipo_documental = $t_object->get('ca_objects.tipo_documental')) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.tipo_documental")."</th><td>".$vs_tipo_documental."</td></tr>";
+				}
+				if ($vs_tradicion_documental = $t_object->get('ca_objects.diplomatic_traditions', array('convertCodesToDisplayText' => true))) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.diplomatic_traditions")."</th><td>".$vs_tradicion_documental."</td></tr>";
+				}
+				if ($vs_volumen_y_soporte = $t_object->get('ca_objects.extent')) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.extent")."</th><td>".$vs_volumen_y_soporte."</td></tr>";
+				}
+				if ($vs_titulo = $t_object->get('ca_objects.preferred_labels')) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.preferred_labels")."</th><td>".$vs_titulo."</td></tr>";
+				}
+				if ($vs_tipo_titulo = $t_object->get('ca_objects.title_type', array('convertCodesToDisplayText' => true))) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.title_type")."</th><td>".$vs_tipo_titulo."</td></tr>";
+				}
+				// TODO: fechas
+				if ($va_lugar_de_creacion = $t_object->getWithTemplate('<ifcount code="ca_places" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_places" restrictToRelationshipTypes="created"><l>^ca_places.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
+					print "<tr class='unit'><th class='table-first-column'>Lugares referidos</th><td>".$va_lugar_de_creacion."</td></tr>";
+				}
+				if ($vs_productor = $t_object->get('ca_entities.preferred_labels', array('restrictToRelationshipTypes' => array('productor'), 'delimiter' => ', ', 'returnAsLink' => true))) {
+					print "<tr class='unit'><th class='table-first-column'>Productor</th><td>".$vs_productor."</td></tr>";
+				}
+				if ($vs_creador = $t_object->get('ca_entities.preferred_labels', array('restrictToRelationshipTypes' => array('productor'), 'delimiter' => ', ', 'returnAsLink' => true))) {
+					print "<tr class='unit'><th class='table-first-column'>Creador</th><td>".$vs_creador."</td></tr>";
+				}
+				if ($vs_adminbiohist = $t_object->get('ca_objects.adminbiohist')) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.adminbiohist")."</th><td>".$vs_adminbiohist."</td></tr>";
+				}
+				if ($vs_custohist = $t_object->get('ca_objects.custohist')) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.custohist")."</th><td>".$vs_custohist."</td></tr>";
+				}
+				if ($vs_forma_de_ingreso = $t_object->get('ca_objects.acquisition_way')) {
+					print "<tr class='unit'><td class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.acquisition_way")."</td><td>".$vs_forma_de_ingreso."</td></tr>";
+				}
+				if ($vs_alcance_y_contenido = $t_object->get('ca_objects.scope_content')) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.scope_content")."</th><td>".$vs_alcance_y_contenido."</td></tr>";
+				}
+				if ($vs_valoracion = $t_object->get('ca_objects.appraisal')) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.appraisal")."</th><td>".$vs_valoracion."</td></tr>";
+				}
+				if ($vs_nuevos_ingresos = $t_object->get('ca_objects.accruals')) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.accruals")."</th><td>".$vs_nuevos_ingresos."</td></tr>";
+				}
+				// Organización (container)
+				if ($vs_integridad = $t_object->get('ca_objects.integrityInformation.integrity', array('convertCodesToDisplayText' => true, 'delimiter' => ', '))) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.integrityInformation.integrity")."</th><td>".$vs_integridad."</td></tr>";
+				}
+				// TODO: Dimensiones
+				if ($vs_material = $t_object->get('ca_objects.materials', array('convertCodesToDisplayText' => true))) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.materials")."</th><td>".$vs_material."</td></tr>";
+				}
+				if ($vs_tecnicas = $t_object->get('ca_objects.techniques', array('convertCodesToDisplayText' => true))) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.techniques")."</th><td>".$vs_tecnicas."</td></tr>";
+				}
+				if ($vs_cromia = $t_object->get('ca_objects.chromy', array('convertCodesToDisplayText' => true, 'delimiter' => ', '))) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.chromy")."</th><td>".$vs_cromia."</td></tr>";
+				}
+				if ($vs_estado_conservacion = $t_object->get('ca_objects.conservation_status', array('convertCodesToDisplayText' => true))) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.conservation_status")."</th><td>".$vs_estado_conservacion."</td></tr>";
+				}
+				if ($va_entidades_relacionadas = $t_object->getWithTemplate('<ifcount code="ca_entities" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_entities"><l>^ca_entities.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
+					print "<tr class='unit'><th class='table-first-column'>Entidades relacionadas</th><td>".$va_entidades_relacionadas."</td></tr>";
+				}
+				if ($va_acontecimientos_relacionados = $t_object->getWithTemplate('<ifcount code="ca_occurrences" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_occurrences"><l>^ca_occurrences.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
+					print "<tr class='unit'><th class='table-first-column'>Acontecimientos relacionados</th><td>".$va_acontecimientos_relacionados."</td></tr>";
+				}
+				// TODO: asuntos
+				if ($va_lugares_referidos = $t_object->getWithTemplate('<ifcount code="ca_places" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_places" restrictToRelationshipTypes="describes"><l>^ca_places.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
+					print "<tr class='unit'><th class='table-first-column'>Lugares referidos</th><td>".$va_lugares_referidos."</td></tr>";
+				}
+				/* if($vs_category = $t_object->get("ca_objects.category", array('convertCodesToDisplayText' => true))) {
 					print "<tr class='unit'><td class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.category")."</td><td>"."{$vs_category}</td></tr>";
 				}
 				if ($va_collection = $t_object->getWithTemplate('<ifcount code="ca_collections" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_collections" restrictToRelationshipTypes="part_of"><l>^ca_collections.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
@@ -138,15 +217,9 @@
 							<td>".$vs_fecha."</td>
 						</tr>";
 				}
-				if ($vs_forma_de_ingreso = $t_object->get('ca_objects.acquisition_way')) {
-					print "<tr class='unit'><td class='table-first-column'>Forma de ingreso</td><td>".$vs_forma_de_ingreso."</td></tr>";
-				}
-				if ($vs_integridad = $t_object->get('ca_objects.integrityInformation')) {
-					print "<tr class='unit'><td class='table-first-column'>Integridad</td><td>".$vs_integridad."</td></tr>";
-				}
 				if ($vs_author = $t_object->get('ca_entities.preferred_labels', array('restrictToRelationshipTypes' => array('author'), 'delimiter' => ', ', 'returnAsLink' => true))) {
 					print "<tr class='unit'><td class='table-first-column'>Autor</td><td>".$vs_author."</td></tr>";
-				}
+				} */
 				/* if ($vs_name = $t_object->get('ca_objects.preferred_labels')) {
 					print "<tr class='unit'><td class='table-first-column'>Título</td><td><a href='/Detail/entities/2830'>".$vs_name."</a></td></tr>";
 				} */
@@ -160,7 +233,7 @@
 					print "<tr class='unit'><td class='table-first-column'>Language</td><td>".$vs_language."</td></tr>";
 				} */
 				# --- access points
-				$va_access_points = array();
+				/* $va_access_points = array();
 				$va_subjects = $t_object->get('ca_list_items.preferred_labels', array('returnAsArray' => true));
 				$va_getty = $t_object->get('ca_objects.aat', array('returnAsArray' => true));
 				$va_lcsh = $t_object->get('ca_objects.lcsh_terms', array('returnAsArray' => true));
@@ -176,7 +249,7 @@
 					ksort($va_access_points_sorted, SORT_NATURAL | SORT_FLAG_CASE);
 					print "<tr class='unit'><td class='table-first-column'>Asuntos</td><td>".implode(", ", $va_access_points_sorted)."</td></tr>";
 
-				}
+				} */
 
 
 

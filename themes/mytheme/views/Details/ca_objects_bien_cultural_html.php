@@ -147,12 +147,12 @@
 				}
 				/* TODO: Dimensiones */
 				if ($vs_material = $t_object->get('ca_objects.materials', array('convertCodesToDisplayText' => true))) {
-					print "<tr class='unit'><th class='table-first-column'>Material</th><td>".$vs_material."</td></tr>";
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.materials")."</th><td>"."</th><td>".$vs_material."</td></tr>";
 				}
 				if ($vs_tecnica = $t_object->get('ca_objects.techniques', array('convertCodesToDisplayText' => true))) {
 					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.techniques")."</th><td>".$vs_tecnica."</td></tr>";
 				}
-				if ($vs_cromia = $t_object->get('ca_objects.chromy', array('convertCodesToDisplayText' => true))) {
+				if ($vs_cromia = $t_object->get('ca_objects.chromy', array('convertCodesToDisplayText' => true, 'delimiter' => ', '))) {
 					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.chromy")."</th><td>".$vs_cromia."</td></tr>";
 				}
 				if ($vs_soporte = $t_object->get('ca_objects.soporte', array('convertCodesToDisplayText' => true))) {
