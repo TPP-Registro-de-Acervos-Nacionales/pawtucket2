@@ -209,6 +209,9 @@
 				if ($premios = $t_object->get('ca_objects.prices')) {
 					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.prices")."</th><td>".$premios."</td></tr>";
 				}
+				if ($premios = $t_object->get('ca_objects.note')) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.note")."</th><td>".$premios."</td></tr>";
+				}
 
 				/* if($vs_category = $t_object->get("ca_objects.category", array('convertCodesToDisplayText' => true))) {
 					print "<tr class='unit'><td class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.category")."</td><td>"."{$vs_category}</td></tr>";
