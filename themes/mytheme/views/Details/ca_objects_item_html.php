@@ -174,6 +174,32 @@
 				if ($va_lugares_referidos = $t_object->getWithTemplate('<ifcount code="ca_places" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_places" restrictToRelationshipTypes="describes"><l>^ca_places.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
 					print "<tr class='unit'><th class='table-first-column'>Lugares referidos</th><td>".$va_lugares_referidos."</td></tr>";
 				}
+				if ($va_condiciones_de_acceso = $t_object->get('ca_objects.accessrestrict', array('convertCodesToDisplayText' => true))) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.accessrestrict")."</th><td>".$va_condiciones_de_acceso."</td></tr>";
+				}
+				if ($va_condiciones_de_reproduccion = $t_object->get('ca_objects.reproduction', array('convertCodesToDisplayText' => true))) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.reproduction")."</th><td>".$va_condiciones_de_reproduccion."</td></tr>";
+				}
+				if ($va_propietario_de_derechos = $t_object->getWithTemplate('<ifcount code="ca_entities" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_entities" restrictToRelationshipTypes="rightsHolder"><l>^ca_entities.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
+					print "<tr class='unit'><th class='table-first-column'>Propietario de derechos</th><td>".$va_propietario_de_derechos."</td></tr>";
+				}
+				// TODO: lengua (mejorar)
+				/* if ($va_escritura = $t_object->get('ca_objects.langmaterial')) {
+					$va_lengua = $t_object->get('ca_objects.langmaterial.language', array('convertCodesToDisplayText' => true));
+					$va_lengua_sistema_escritura = $t_object->get('ca_objects.langmaterial.languagesystem', array('convertCodesToDisplayText' => true));
+					$va_lengua_material = $t_object->get('ca_objects.langmaterial.material', array('convertCodesToDisplayText' => true));
+					$va_lengua_tipo = $t_object->get('ca_objects.langmaterial.script_type', array('convertCodesToDisplayText' => true));
+
+					$texto = $va_lengua."-".$va_lengua_sistema_escritura."-".$va_lengua_material."-".$va_lengua_tipo;
+
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.langmaterial")."</th><td>".$texto."</td></tr>";
+				} */
+				if ($caracteristicas_fisicas = $t_object->get('ca_objects.phystech', array('convertCodesToDisplayText' => true))) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.phystech")."</th><td>".$caracteristicas_fisicas."</td></tr>";
+				}
+				if ($instrumentos_de_descripcion = $t_object->get('ca_objects.other_find_aid', array('convertCodesToDisplayText' => true))) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.other_find_aid")."</th><td>".$instrumentos_de_descripcion."</td></tr>";
+				}
 				/* if($vs_category = $t_object->get("ca_objects.category", array('convertCodesToDisplayText' => true))) {
 					print "<tr class='unit'><td class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.category")."</td><td>"."{$vs_category}</td></tr>";
 				}
