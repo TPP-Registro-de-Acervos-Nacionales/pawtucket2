@@ -200,6 +200,13 @@
 				if ($instrumentos_de_descripcion = $t_object->get('ca_objects.other_find_aid', array('convertCodesToDisplayText' => true))) {
 					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.other_find_aid")."</th><td>".$instrumentos_de_descripcion."</td></tr>";
 				}
+				if ($existencia_originales = $t_object->get('ca_objects.originalsloc')) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.originalsloc")."</th><td>".$existencia_originales."</td></tr>";
+				}
+				if ($existencia_copias = $t_object->get('ca_objects.altformavail')) {
+					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.altformavail")."</th><td>".$existencia_copias."</td></tr>";
+				}
+
 				/* if($vs_category = $t_object->get("ca_objects.category", array('convertCodesToDisplayText' => true))) {
 					print "<tr class='unit'><td class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.category")."</td><td>"."{$vs_category}</td></tr>";
 				}
