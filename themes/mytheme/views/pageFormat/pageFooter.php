@@ -73,6 +73,7 @@
 				</div>
 			</div>
 		</footer><!-- end footer -->
+		</div>
 <?php
 	//
 	// Output HTML for debug bar
