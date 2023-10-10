@@ -22,3 +22,7 @@ setup.php
 /support/scripts/*.php
 /support/scripts/*.sh
 media
+themes/*
+!themes/copyme
+!themes/default
+!themes/colecciones-nacionales
