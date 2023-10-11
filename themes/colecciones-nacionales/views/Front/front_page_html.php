@@ -342,7 +342,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-sm-3 text-center">
+			<!-- <div class="col-sm-3 text-center">
 				<a href="https://www.bn.gov.ar/biblioteca/museo" target="_blank" rel="noopener noreferrer">
 					<img style="max-width: 100%; max-height: 100%;"
 						 src="/themes/colecciones-nacionales/assets/pawtucket/graphics/logo_museo_libro_lengua_0.jpg" alt="">
@@ -353,7 +353,7 @@
 					</div>
 				</a>
 			</div>
-			<!-- <div class="col-sm-3 text-center">
+			<div class="col-sm-3 text-center">
 				<a href="https://www.bellasartes.gob.ar/" target="_blank" rel="noopener noreferrer">
 					<img style="max-width: 100%; max-height: 100%;"
 						 src="/themes/colecciones-nacionales/assets/pawtucket/graphics/logo_museo_b_artes_0_0.jpg" alt="">
