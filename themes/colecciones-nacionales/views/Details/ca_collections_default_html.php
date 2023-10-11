@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class='col-md-12 col-lg-12'>
 					<H4>{{{^ca_collections.preferred_labels.name}}}</H4>
-					<H6>{{{<ifdef code="ca_collections.idno"> ^ca_collections.idno</ifdef>}}}</H6>
+					<H6>{{{^ca_collections.type_id}}}{{{<ifdef code="ca_collections.idno">, ^ca_collections.idno</ifdef>}}}</H6>
 <?php
 					if ($vn_pdf_enabled) {
 						print "<div class='exportCollection'><span class='glyphicon glyphicon-file'></span> ".caDetailLink($this->request, "Download as PDF", "", "ca_collections",  $vn_top_level_collection_id, array('view' => 'pdf', 'export_format' => '_pdf_ca_collections_summary'))."</div>";
@@ -56,7 +56,7 @@
 			<div class="row">
 				<div class='col-md-6 col-lg-6'>
 					{{{<ifdef code="ca_collections.description"><H6>About</H6>^ca_collections.description<br/></ifdef>}}}
-					{{{<ifcount code="ca_objects" min="1" max="1"><div class='unit'><unit relativeTo="ca_objects" delimiter=" "><l>^ca_object_representations.media.large</l><div class='caption'>Related Object: <l>^ca_objects.preferred_labels.name</l></div></unit></div></ifcount>}}}
+					{{{<ifcount code="ca_objects" ><div class='unit'><unit relativeTo="ca_objects" delimiter=""><div class='caption'><l>^ca_objects.preferred_labels.name</l></div></unit></div></ifcount>}}}
 <?php
 				# Comment and Share Tools
 				if ($vn_comments_enabled | $vn_share_enabled) {
