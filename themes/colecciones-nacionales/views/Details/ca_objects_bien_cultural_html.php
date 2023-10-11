@@ -60,7 +60,6 @@
 				<hr/>
 
 			</div><!-- end col -->
-			<!-- <h1>bien cultural</h1> -->
 			<div class="panel-group">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -138,7 +137,7 @@
 					$proximidades   = explode(';', $t_object->get('ca_objects.unitdate.date_near', array('convertCodesToDisplayText' => true)));
 
 					$textos_fechas = array();
-					foreach ( $fechas as $idx => $fecha ) {
+					foreach ( $vs_fechas as $idx => $fecha ) {
 						array_push($textos_fechas, $tipos_de_fecha[$idx].": ".$fechas[$idx]." (".$proximidades[$idx].")");
 					}
 
@@ -148,6 +147,9 @@
 							<th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.unitdate")."</th>
 							<td>".$vs_texto_fecha."</td>
 						</tr>";
+				}
+				if ($lugar_creacion = $t_object->getWithTemplate('<ifcount code="ca_places" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_places" restrictToRelationshipTypes="other"><l>^ca_places.preferred_labels</l></unit></unit></ifcount>')) {
+					print "<tr class='unit'><th class='table-first-column'> Lugar de creación / ejecución</th><td>".$lugar_creacion."</td></tr>";
 				}
 			?>
       </table>
@@ -168,6 +170,9 @@
 				if ($vs_forma_de_ingreso = $t_object->get('ca_objects.acquisition_way')) {
 					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.acquisition_way")."</th><td>".$vs_forma_de_ingreso."</td></tr>";
 				}
+				if ($prop_anteriores = $t_object->getWithTemplate('<ifcount code="ca_entities" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_entities" restrictToRelationshipTypes="propietario_anterior"><l>^ca_entities.preferred_labels</l></unit></unit></ifcount>')) {
+					print "<tr class='unit'><th class='table-first-column'>Propietario Anteriores</th><td>".$prop_anteriores."</td></tr>";
+				}
 			?>
       </table>
     </div>
@@ -180,33 +185,31 @@
         <a data-toggle="collapse" href="#collapse-desc-fisica-y-contenido">Descripción Física y de Contenido</a>
       </h4>
     </div>
-    <div id="collapse-desc-fisica-y-contenido" class="panel-collapse collapse">
+    <div id="collapse-desc-fisica-y-contenido" class="panel-collapse collapse in">
       <table class="table">
         <tbody>
           <?php
 				if ($vs_integridad = $t_object->get('ca_objects.integrityInformation.integrity')) {
 					print "<tr class='unit'><th class='table-first-column'>Integridad</th><td>".$vs_integridad."</td></tr>";
 				}
-				/* TODO: Dimensiones */
-				/* if ($vs_dimensiones = $t_object->get('ca_objects.dimensiones', array('convertCodesToDisplayText' => true))) {
-					if (sizeof($vs_dimensiones) > 0) {
-						$fila = "<tr class='unit'>
-							<td class='table-first-column'>Dimensiones</td><td>";
+				if ($vs_dimensiones = $t_object->get('ca_objects.dimensiones')) {
+					$tipo_de_medida = explode(';', $t_object->get('ca_objects.dimensiones.tipo_de_medida', array('convertCodesToDisplayText' => true)));
+					$valor = explode(';', $t_object->get('ca_objects.dimensiones.valor'));
+					$unidad = explode(';', $t_object->get('ca_objects.dimensiones.unidad'));
+					$funcion = explode(';', $t_object->get('ca_objects.dimensiones.funcion'));
 
-						foreach($vs_dimensiones as $vs_dimension) {
-							$tipo_de_medida = $t_object->get('ca_objects.dimensiones.tipo_de_medida',array('convertCodesToDisplayText' => true));
-							$valor = $t_object->get('ca_objects.dimensiones.valor');
-							$unidad = $t_object->get('ca_objects.dimensiones.unidad');
-							$funcion = $t_object->get('ca_objects.dimensiones.funcion');
-
-							$texto_dimension = $tipo_de_medida.": ".$valor."<br>";
-
-							$fila = $fila.$vs_dimensiones; //.": ".$valor." ".$unidad." (".$funcion.")""." | ";
-						}
-						print $vs_dimensiones."</td></tr>";
-
+					$textos_dimensiones = array();
+					foreach ( $vs_dimensiones as $idx => $dimension ) {
+						array_push($textos_dimensiones, $tipo_de_medida[$idx].": ".$valor[$idx]." ".$unidad[$idx]." (".$funcion[$idx].")");
 					}
-				} */
+
+					$vs_texto_dimensiones = implode('<br>', $textos_dimensiones);
+
+					print "<tr class='unit'>
+							<th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.dimensiones")."</th>
+							<td>".$vs_texto_dimensiones."</td>
+						</tr>";
+				}
 				if ($vs_material = $t_object->get('ca_objects.materials', array('convertCodesToDisplayText' => true))) {
 					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.materials")."</th><td>".$vs_material."</td></tr>";
 				}
@@ -225,14 +228,22 @@
 				if ($vs_tirada = $t_object->get('ca_objects.state_edition_num', array('convertCodesToDisplayText' => true))) {
 					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.state_edition_num")."</th><td>".$vs_tirada."</td></tr>";
 				}
-				if ($vs_tipo = $t_object->get('ca_objects.inscription.mark')) {
-					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.inscription.mark")."</th><td>".$vs_tipo."</td></tr>";
-				}
-				if ($vs_ubicacion = $t_object->get('ca_objects.inscription.position')) {
-					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.inscription.position")."</th><td>".$vs_ubicacion."</td></tr>";
-				}
-				if ($vs_contenido = $t_object->get('ca_objects.inscription.inscriptions')) {
-					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.inscription.inscriptions")."</th><td>".$vs_contenido."</td></tr>";
+				if ($inscripciones = $t_object->get('ca_objects.inscription')) {
+					$tipo = explode(';', $t_object->get('ca_objects.inscription.mark', array('convertCodesToDisplayText' => true)));
+					$ubicacion = explode(';', $t_object->get('ca_objects.inscription.position'));
+					$contenido = explode(';', $t_object->get('ca_objects.inscription.inscriptions'));
+
+					$textos_inscripciones = array();
+					foreach ( $tipo as $idx => $inscripcion ) {
+						array_push($textos_inscripciones, $tipo[$idx].": ".$ubicacion[$idx]." (".$contenido[$idx].")");
+					}
+
+					$vs_texto_inscripciones = implode('<br>', $textos_inscripciones);
+
+					print "<tr class='unit'>
+							<th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.inscriptions")."</th>
+							<td>".$vs_texto_inscripciones."</td>
+						</tr>";
 				}
 				if ($vs_estado_conservacion = $t_object->get('ca_objects.conservation_status', array('convertCodesToDisplayText' => true))) {
 					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.conservation_status")."</th><td>".$vs_estado_conservacion."</td></tr>";
@@ -243,6 +254,9 @@
 				if ($va_acontecimientos_relacionados = $t_object->getWithTemplate('<ifcount code="ca_occurrences" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_occurrences"><l>^ca_occurrences.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
 					print "<tr class='unit'><th class='table-first-column'>Acontecimientos relacionados</th><td>".$va_acontecimientos_relacionados."</td></tr>";
 				}
+				/* if ($va_asuntos = $t_object->getWithTemplate('<ifcount code="ca_occurrences" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_occurrences"><l>^ca_occurrences.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
+					print "<tr class='unit'><th class='table-first-column'>Acontecimientos relacionados</th><td>".$va_asuntos."</td></tr>";
+				} */
 				if ($va_lugares_referidos = $t_object->getWithTemplate('<ifcount code="ca_places" min="1"><unit delimiter="<br/>"><unit relativeTo="ca_places" restrictToRelationshipTypes="describes"><l>^ca_places.preferred_labels</l> (^relationship_typename)</unit></unit></ifcount>')) {
 					print "<tr class='unit'><th class='table-first-column'>Lugares referidos</th><td>".$va_lugares_referidos."</td></tr>";
 				}
@@ -274,40 +288,29 @@
 				if ($condiciones_tecnicas_de_uso = $t_object->get('ca_objects.phystech', array('convertCodesToDisplayText' => true))) {
 					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.phystech")."</th><td>".$condiciones_tecnicas_de_uso."</td></tr>";
 				}
-				if ($expuesta = $t_object->get('ca_objects.restrictions.inexhibitions_yn')) {
-					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.restrictions.inexhibitions_yn")."</th><td>".$expuesta."</td></tr>";
+				if ($epigrafes = $t_object->get('ca_objects.quote')) {
+					$texto   = explode(';', $t_object->get('ca_objects.quote.quote_value'));
+					$funcion = explode(';', $t_object->get('ca_objects.quote.quote_function', array('convertCodesToDisplayText' => true)));
+					$fecha   = explode(';', $t_object->get('ca_objects.quote.quote_date', array('convertCodesToDisplayText' => true)));
+
+					$textos_epigrafe = array();
+					foreach ( $epigrafes as $idx => $epigrafe ) {
+						array_push($textos_epigrafe, $funcion[$idx].": ".$texto[$idx]." (".$fecha[$idx].")");
+					}
+
+					$texto_epigrafe = implode('<br>', $textos_epigrafe);
+
+					print "<tr class='unit'>
+							<th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.quote")."</th>
+							<td>".$texto_epigrafe."</td>
+						</tr>";
 				}
-				if ($prestada = $t_object->get('ca_objects.inloans_yn', array('convertCodesToDisplayText' => true))) {
-					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.inloans_yn")."</th><td>".$prestada."</td></tr>";
-				}
-				// EPÍGRAFE [Texto 	Función 	Fecha (AAAA/MM/DD)]
 		  ?>
       </table>
     </div>
   </div>
 </div>
-<div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapse-materiales-relacionados">Materiales Relacionados</a>
-      </h4>
-    </div>
-    <div id="collapse-materiales-relacionados" class="panel-collapse collapse">
-      <table class="table">
-        <tbody>
-          <?php
-				// Unidades de descripción relacionadas (código de identificación univoco)
-				// Objetos relacionados de la colección (código de identificación univoco)
-				// Objetos relacionados externos de la colección (código de identificación univoco)
-				// Registro en bibliotecas (código de identificación univoco)
-				// Investigaciones relacionadas
-				// Enlaces externos: nombre del entorno - url.
-			?>
-      </table>
-    </div>
-  </div>
-</div>
+
 <div class="panel-group">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -340,9 +343,6 @@
           <?php
 				if ($nota_publica = $t_object->get('ca_objects.note')) {
 					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.note")."</th><td>".$nota_publica."</td></tr>";
-				}
-				if ($citacion = $t_object->get('ca_objects.quotation')) {
-					print "<tr class='unit'><th class='table-first-column'>".$t_object->getDisplayLabel("ca_objects.quotation")."</th><td>".$citacion."</td></tr>";
 				}
 			?>
       </table>
