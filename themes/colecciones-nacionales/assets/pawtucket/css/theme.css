@@ -1,0 +1,175 @@
+/* search / browse results */
+.bResultItemSetLink {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	font-size: 18px;
+	display:none;
+}
+.bResultListItem .bResultItemSetLink{
+	bottom: 25px;
+	right: 12px;
+}
+.bResultItem:hover .bResultItemSetLink, .bResultListItem:hover .bResultItemSetLink{
+	display:inline-block;
+}
+.bResultItem:hover .bResultItemText, .bResultListItem:hover .bResultListItemText{
+	padding-bottom:20px;
+}
+.bResultItem .bResultItemText, .bResultListItemCol .bResultListItemText{
+  	font-size: 14px;
+	color: #000;
+	font-family: lato;
+}
+.bResultItem .bResultItemText a, .lbItemContent .caption a{
+	font-size: 14px;
+	color: #000;
+	font-family: lato;
+	line-height: 1.2em;
+}
+.bResultListItem .bResultListItemText a {
+	line-height: 1.2em;
+	color: #000;
+	font-family: lato;
+	font-size: 16px;
+}
+.bResultListItem .bResultListItemText small a, .bResultItem .bResultItemText small a, .lbItemContent .caption small a {
+	font-size: 13px;
+	color:#595959;
+}
+
+#bRefine H2, #bRefine H5, #bRefine H3, #bRefine a{
+	color:#000;
+}
+#bRefine a{
+	font-size: 13px;
+}
+@media(max-width:768px){
+	.results .bSearchWithinContainer{
+		display:none;
+	}
+}
+.results .bSearchWithinContainer{
+	clear:both;
+	padding:15px 0px 15px 0px;
+	text-align:center;
+}
+.results .btn-search-refine, .results .btn-search-refine:hover{
+	font-size: 14px;
+	cursor: pointer;
+	background-color: #fff;
+	color:#000;
+	font-size: 14px;
+	line-height:1em;
+	padding: 9px;
+
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	outline: 0;
+	border:0px;
+	border-radius: 0px;
+}
+.bSearchWithin, .bSearchWithin:focus {
+    width: 80%;
+    box-shadow: none;
+    border: 0px;
+    border: 0px;
+    border-radius: 0px;
+    height: 35px;
+    font-size: 14px;
+    line-height: 26px;
+    background-color: #FFF;
+	font-size: 14px;
+	display: inline-block;
+	display:inline-block;
+}
+#bMorePanel{
+	left:0px;
+	right:auto;
+}
+.browseRemoveFacet, .browseRemoveFacet .btn{
+	display:block;
+	width:100%;
+	font-size:11px;
+	margin:0px 0px 5px 0px;
+}
+.browseRemoveFacet .btn{
+	white-space: normal;
+}
+.browseRemoveFacet:hover, .browseRemoveFacet .btn:hover{
+	text-decoration:none;
+}
+a.browseRemoveFacet .glyphicon{
+	color:#0081ca !important;
+}
+a.browseRemoveFacet:hover .glyphicon{
+	color:#000 !important;
+}
+.multisearchFullResults a {
+  color: #000;
+}
+.multisearchSort ul li a {
+  text-decoration: underline;
+  color: #000;
+}
+.multisearch .scrollButtonNext, .multisearch .scrollButtonPrevious {
+  color: #000;
+}
+.multisearch H2 a {
+  color: #000;
+  font-family: Lato;
+}
+.multisearch .authoritySet a, .multisearch .multisearchResult a {
+  color: #000;
+  font-size: 14px;
+  font-family: Lato;
+  line-height: 1.1em;
+}
+.multisearch .authoritySet small a, .multisearch .multisearchResult small a{
+	font-size: 12px;
+	color:#595959;
+}
+.multisearch .authorityResult.programsResult{
+	height:70px;
+}
+.noSearchResults{
+	text-transform:none;
+}
+.noSearchResults a{
+	text-decoration:underline;
+}
+/* collections & listing - Subject guides */
+.collectionIntro {
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.8em;
+}
+.collectionsList a{
+	text-decoration:none;
+}
+.collectionTile:hover{
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.subjectGuideIntro{
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 1.8em;
+	padding-bottom:20px;
+}
+/* listing */
+.collectionTile .title {
+	padding: 10px;
+	font-family: "Lato";
+	font-size:20px;
+	font-weight:bold;
+	text-align:center;
+	text-transform:none;
+}
+.collectionTile img{
+	width:100%;
+	height: 200px;
+	object-fit: cover;
+	object-position: center center;
+}

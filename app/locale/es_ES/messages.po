@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CollectiveAccess Pawtucket2\n"
 "POT-Creation-Date: 2016-10-10 23:03-0400\n"
-"PO-Revision-Date: 2023-05-03 00:21-0300\n"
+"PO-Revision-Date: 2023-10-19 12:29-0300\n"
 "Last-Translator: Seth <Seth@collectiveacess.org>\n"
 "Language-Team: CollectiveAccess <info@collectiveaccess.org>\n"
 "Language: es_ES\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _t;_\n"
@@ -8704,7 +8704,7 @@ msgstr ""
 
 #: lib/core/ApplicationChangeLog.php:142 lib/core/ApplicationChangeLog.php:212
 msgid "Date"
-msgstr ""
+msgstr "Fecha"
 
 #: lib/core/ApplicationChangeLog.php:145 lib/core/ApplicationChangeLog.php:215
 #: models/ca_change_log.php:61 models/ca_data_import_events.php:64
@@ -9603,7 +9603,7 @@ msgstr ""
 
 #: lib/core/Plugins/GeographicMap/OpenLayers.php:296
 msgid "Loading..."
-msgstr ""
+msgstr "Cargando..."
 
 #: lib/core/Plugins/GeographicMap/OpenLayers.php:521
 msgid "Remove"
@@ -16088,7 +16088,7 @@ msgstr ""
 
 #: models/ca_list_items.php:84 models/ca_occurrences.php:82
 msgid "Identifier"
-msgstr ""
+msgstr "Identificador"
 
 #: models/ca_list_items.php:84
 msgid "Unique identifier for this list item"
@@ -18141,7 +18141,7 @@ msgstr ""
 #: models/ca_representation_annotation_labels.php:80
 #: models/ca_user_representation_annotation_labels.php:80
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: models/ca_representation_annotation_labels.php:80
 #: models/ca_user_representation_annotation_labels.php:80

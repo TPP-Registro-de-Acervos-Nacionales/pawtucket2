@@ -185,7 +185,7 @@
         <a data-toggle="collapse" href="#collapse-desc-fisica-y-contenido">Descripción Física y de Contenido</a>
       </h4>
     </div>
-    <div id="collapse-desc-fisica-y-contenido" class="panel-collapse collapse in">
+    <div id="collapse-desc-fisica-y-contenido" class="panel-collapse collapse">
       <table class="table">
         <tbody>
           <?php
